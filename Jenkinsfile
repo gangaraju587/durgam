@@ -31,6 +31,20 @@ pipeline {
                 waitForQualityGate abortPipeline: true
             }
         }
+	stage('SSH into server') {
+            when {
+                expression {
+                    currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                script {
+                    sshagent(['my-ssh-key']) {
+                        sh "gcloud compute ssh --zone "us-west4-b" "instance-2" --project "hardeep-poc" 'mkdir test && cd test && git pull && cd hardeep && mvn clean package && docker build -t webapp:${buildNumber} . && docker run -d -p 8080:8080 --entrypoint=\"/bin/sh\" webapp:${buildNumber} -c \"sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done\"'"
+                    }
+                }
+            }
+        }
         
     }
     post {

@@ -44,6 +44,7 @@ pipeline {
 		    cd hardeep
 		    git pull
 		    mvn clean package
+		    for i in $(docker ps | awk $'{print $1}'); do  docker stop $i; done
 		    docker build -t webapp:${BUILD_NUMBER} .
 		    docker run -d -p 8080:8080 --entrypoint="/bin/sh" mywebapp:${BUILD_NUMBER} -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
                     EOF

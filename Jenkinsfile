@@ -38,18 +38,17 @@ pipeline {
                 }
             }*/
             steps {
-                script {
-	        def buildNumber = "${env.BUILD_NUMBER}"
-		sh """
-		    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150 << EOF
-		    cd hardeep
-		    git pull
-		    mvn clean package
-		    for i in $(docker ps | awk $'{print $1}'); do  docker stop $i; done
-		    docker build -t webapp:${BUILD_NUMBER} .
-		    docker run -d -p 8080:8080 --entrypoint="/bin/sh" mywebapp:${BUILD_NUMBER} -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
-                    EOF
-                """
+		    script {
+			    
+		            sh """
+		    	    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150 << EOF
+		            cd hardeep
+			    git pull
+			    mvn clean package
+			    docker build -t webapp .
+			    docker run -d -p 8080:8080 --entrypoint="/bin/sh" webapp -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
+			    EOF
+              		    """
                     }
                 }
             }

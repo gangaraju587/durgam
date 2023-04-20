@@ -32,11 +32,11 @@ pipeline {
             }
         }
 	stage('SSH into server') {
-            when {
+            /*when {
                 expression {
                     currentBuild.result == 'SUCCESS'
                 }
-            }
+            }*/
             steps {
                 script {
                     sshagent(['my-ssh-key']) {

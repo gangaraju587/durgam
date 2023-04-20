@@ -39,8 +39,15 @@ pipeline {
             }*/
             steps {
                 script {
-                    sshagent(['my-ssh-key']) {
-                        sh "gcloud compute ssh --zone "us-west4-b" "instance-2" --project "hardeep-poc" 'mkdir test && cd test && git pull && cd hardeep && mvn clean package && docker build -t webapp:${buildNumber} . && docker run -d -p 8080:8080 --entrypoint=\"/bin/sh\" webapp:${buildNumber} -c \"sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done\"'"
+		sh """
+		    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150
+		    cd hardeep
+		    git pull
+		    mvn clean package
+		    docker build -t webapp:${BUILD_NUMBER} .
+		    docker run -d -p 8080:8080 --entrypoint="/bin/sh" mywebapp:${BUILD_NUMBER} -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
+                    EOF
+                """
                     }
                 }
             }

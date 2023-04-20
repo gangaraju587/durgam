@@ -20,7 +20,7 @@ pipeline {
 	stage('SonarQube analysis') {
             steps {
 		// Change this as per your Jenkins Configuration
-                withSonarQubeEnv('sonar') {
+                withSonarQubeEnv('SonarQube') {
                     sh 'mvn package sonar:sonar'
                 }
             }

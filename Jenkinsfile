@@ -40,7 +40,7 @@ pipeline {
             steps {
                 script {
 		sh """
-		    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150
+		    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150 << EOF
 		    cd hardeep
 		    git pull
 		    mvn clean package

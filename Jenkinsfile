@@ -43,8 +43,8 @@ pipeline {
 				    whoami
 				    pwd
 				    mvn clean package
-				    docker build -t webapp .
-				    docker run -d -p 8080:8080 --entrypoint="/bin/sh" webapp -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
+				    sudo docker build -t webapp .
+				    sudo docker run -d -p 8080:8080 --entrypoint="/bin/sh" webapp -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
 				    EOF
 				    """
                     }

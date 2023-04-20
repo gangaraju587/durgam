@@ -41,7 +41,8 @@ pipeline {
 		    script {
 			    
 		            sh """
-		    	    sudo ssh -i /home/.ssh/jenkins jenkins@34.125.22.150 << EOF
+		    	    sudo ssh-keyscan -t rsa 34.125.22.150 >> ~/.ssh/known_hosts
+			    sudo ssh -i /home/.ssh/jenkins jenkins@34.125.22.150 << EOF
 			    touch test1
 		            cd hardeep
 			    git pull

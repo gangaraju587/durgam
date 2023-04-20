@@ -41,6 +41,7 @@ pipeline {
 		    script {
 			    
 		            sh """
+			    whoami
 			    ssh-keyscan -t rsa 34.125.22.150
 		    	    sudo ssh-keyscan -t rsa 34.125.22.150 >> ~/.ssh/known_hosts
 			    sudo ssh -i /home/.ssh/jenkins jenkins@34.125.22.150 << EOF

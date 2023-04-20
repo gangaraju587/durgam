@@ -43,6 +43,7 @@ pipeline {
 			    sshagent(['ssh-agent']) {
 				    sh """
 				    whoami
+				    pwd
 				    touch test1
 				    cd hardeep
 				    git pull

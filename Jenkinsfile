@@ -17,12 +17,12 @@ pipeline{
 
               stage('Quality Gate Statuc Check'){
 
-               agent {
+              /* agent {
                 docker {
                 image 'maven'
                 args '-v $HOME/.m2:/root/.m2'
                 }
-            }
+            }*/
                   steps{
                       script{
                       withSonarQubeEnv('sonar') { 

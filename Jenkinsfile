@@ -45,7 +45,7 @@ pipeline {
 				    mvn clean package
 				    sudo docker build -t webapp .
 				    sudo docker run -d -p 8081:8080 --entrypoint="/bin/sh" webapp -c "sh /usr/local/tomcat/bin/startup.sh;while true; do echo hello; sleep 10;done"
-				    EOF
+				    sudo docker ps
 				    """
                     }
                 }

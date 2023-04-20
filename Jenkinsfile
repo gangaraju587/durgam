@@ -41,7 +41,7 @@ pipeline {
 		    script {
 			    
 		            sh """
-		    	    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150 << EOF
+		    	    ssh -i /home/.ssh/jenkins jenkins@34.125.22.150 << EOF
 			    touch test1
 		            cd hardeep
 			    git pull

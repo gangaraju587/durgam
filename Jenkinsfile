@@ -39,6 +39,7 @@ pipeline {
             }*/
             steps {
                 script {
+	        def buildNumber = "${env.BUILD_NUMBER}"
 		sh """
 		    ssh -i ~/.ssh/jenkins jenkins@34.125.22.150 << EOF
 		    cd hardeep

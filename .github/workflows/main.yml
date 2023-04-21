@@ -3,7 +3,7 @@ on:
    # a pull request. 
    push:
      branches:
-       - uat
+       - master
    pull_request:
      branches: 
        - master

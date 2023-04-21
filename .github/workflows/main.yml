@@ -1,13 +1,13 @@
 on:
    push:
      branches:
-       - dev
+       - master
    pull_request:
      branches: 
-       - dev
+       - master
 jobs:
- name: Build
  runs-on: ubuntu-latest
+ name: Build
  steps:
    - uses: actions/checkout@v2
      with:

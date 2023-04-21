@@ -7,8 +7,8 @@ on:
    pull_request:
      branches: 
        - master
- name: Main Workflow
- jobs:
+name: Main Workflow
+jobs:
    sonarqube:
      runs-on: ubuntu-latest
      steps:

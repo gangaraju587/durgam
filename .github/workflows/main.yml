@@ -4,11 +4,9 @@ on:
    push:
      branches:
        - uat
-       - master
    pull_request:
      branches: 
        - uat
-       - master
  name: Main Workflow
  jobs:
    sonarqube:

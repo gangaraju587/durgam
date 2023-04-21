@@ -20,11 +20,11 @@ jobs:
      - name: SonarQube Scan
        uses: sonarsource/sonarqube-scan-action@master
        env:
-         SONAR_TOKEN: squ_c07a86170631dbb99d437ac28adeaee65099195
-         SONAR_HOST_URL: http://34.118.241.190:9000
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
      - name: SonarQube Quality Gate check
        uses: sonarsource/sonarqube-quality-gate-action@master
        # Force to fail step after specific time
        timeout-minutes: 5
        env:
-        SONAR_TOKEN: squ_c07a86170631dbb99d437ac28adeaee65099195
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

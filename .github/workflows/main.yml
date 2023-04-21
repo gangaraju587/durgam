@@ -6,7 +6,7 @@ on:
        - uat
    pull_request:
      branches: 
-       - uat
+       - master
  name: Main Workflow
  jobs:
    sonarqube:

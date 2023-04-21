@@ -39,13 +39,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Install SSH key
-        uses: webfactory/ssh-agent@v0.5.0
-        with:
-          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
 
       - name: SSH into server
         uses: appleboy/ssh-action@master
@@ -53,6 +46,7 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+          port: 22
           script: |
             cd hardeep
             git pull

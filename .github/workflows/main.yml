@@ -1,10 +1,10 @@
 on:
    push:
      branches:
-       - master
+       - uat
    pull_request:
      branches: 
-       - master
+       - uat
 jobs:
  sonarqube:
     runs-on: ubuntu-latest

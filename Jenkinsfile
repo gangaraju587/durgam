@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/gangaraju587/hardeep.git'    
+                git url: 'https://github.com/gangaraju587/durgam.git'    
 		            echo "Code Checked-out Successfully!!";
             }
         }

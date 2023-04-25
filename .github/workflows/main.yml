@@ -48,6 +48,7 @@ jobs:
           key: ${{ secrets.KEY }}
           port: 22
           script: |
+            set -e
             ls
             pwd
             whoami

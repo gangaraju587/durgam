@@ -49,6 +49,7 @@ jobs:
           port: 22
           script: |
             ls
+            pwd
             cd pilot
             git pull
             mvn clean package

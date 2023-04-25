@@ -51,7 +51,7 @@ jobs:
             ls
             pwd
             whoami
-            mv hardeep pilot
+            cd pilot
             git pull
             mvn clean package
             sudo docker build -t webapp .

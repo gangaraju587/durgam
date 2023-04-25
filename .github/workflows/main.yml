@@ -50,6 +50,7 @@ jobs:
           script: |
             ls
             pwd
+            whoami
             cd pilot
             git pull
             mvn clean package
